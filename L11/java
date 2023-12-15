@@ -1,0 +1,127 @@
+import java.util.ArrayList;
+
+import java.util.List;
+
+import java.util.Random;
+
+import java.util.stream.Collectors;
+
+
+
+class Student {
+
+    private String name;
+
+    private int indexNo;
+
+    private int age;
+
+
+
+    public String getName() {
+
+        return name;
+
+    }
+
+
+
+    public Student withName(String name) {
+
+        this.name = name;
+
+        return this;
+
+    }
+
+
+
+    public int getIndexNo() {
+
+        return indexNo;
+
+    }
+
+
+
+    public Student withIndexNo(int indexNo) {
+
+        this.indexNo = indexNo;
+
+        return this;
+
+    }
+
+
+
+    public int getAge() {
+
+        return age;
+
+    }
+
+
+
+    public Student withAge(int age) {
+
+        this.age = age;
+
+        return this;
+
+    }
+
+}
+
+
+
+public class Demo {
+
+    public static void printValues(Student s) {
+
+        System.out.println("Name: " + s.getName());
+
+        System.out.println("IndexNo: " + s.getIndexNo());
+
+        System.out.println("Age: " + s.getAge());
+
+        System.out.println("---------------------------");
+
+    }
+
+
+
+    public static Student createStudent(String name, int indexNo, int age) {
+
+        return new Student()
+
+                .withName(name)
+
+                .withIndexNo(indexNo)
+
+                .withAge(age);
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+        List<String> names = List.of("Alice", "Bob", "Charlie", "David", "Eva");
+
+
+
+        Random random = new Random();
+
+        List<Student> students = names.stream()
+
+                .map(name -> createStudent(name, random.nextInt(10000), random.nextInt(13) + 18))
+
+                .collect(Collectors.toList());
+
+
+
+        students.forEach(Demo::printValues);
+
+    }
+
+}
