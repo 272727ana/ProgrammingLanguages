@@ -1,0 +1,90 @@
+package proba2;
+
+import java.util.InputMismatchException;
+
+import java.util.Scanner;
+
+
+
+public class TwoDimensionalField {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+
+
+        
+
+        System.out.println("Enter the number of rows:");
+
+        int rows = scanner.nextInt();
+
+        
+
+        System.out.println("Enter the number of columns:");
+
+        int columns = scanner.nextInt();
+
+
+
+     
+
+        int[][] field = new int[rows][columns];
+
+
+
+
+        System.out.println("Enter the elements of the 2D field:");
+
+
+
+        try {
+
+            for (int i = 0; i < rows; i++) {
+
+                for (int j = 0; j < columns; j++) {
+
+                    System.out.printf("Enter element at position [%d][%d]: ", i, j);
+
+                    field[i][j] = scanner.nextInt();
+
+                }
+
+            }
+
+
+
+
+            int sum = 0;
+
+            for (int[] row : field) {
+
+                for (int element : row) {
+
+                    sum += element;
+
+                }
+
+            }
+
+
+
+            double average = (double) sum / (rows * columns);
+
+
+
+
+            System.out.println("Sum of the field: " + sum);
+
+            System.out.println("Average of the field: " + average);
+
+        } catch (InputMismatchException e) {
+
+            System.out.println("Invalid input. Please enter integers only.");
+
+        }
+
+    }
+
+}
